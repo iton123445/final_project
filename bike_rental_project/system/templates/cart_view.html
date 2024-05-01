@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart View</title>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    {% if cart.bike %}
+        <ul>
+            <li>{{ cart.bike.bike_name }} - {{ cart.bike.model }} - ${{ cart.bike.price }}</li>
+        </ul>
+        <p>Total: ${{ cart.bike.price }}</p>  <!-- Assuming each cart has only one bike -->
+       
+        <p>Your cart is empty.</p>
+    {% endif %}
+</body>
+</html>

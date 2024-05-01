@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Bike</title>
+</head>
+<body>
+    <h1>Book Bike</h1>
+    <p>{{ bike.bike_name }} - {{ bike.model }} - ${{ bike.price }}</p>
+    <form method="post" id="bookingForm">
+        {% csrf_token %}
+        <label for="return_date">Return Date:</label>
+        <input type="date" id="return_date" name="return_date" required><br>
+        <label for="return_time">Return Time:</label>
+        <select id="return_time" name="return_time" required>
+            <!-- Placeholder option for time slots -->
+            <option value="" disabled selected>Select a time</option>
+        </select><br>
+        <input type="submit" value="Book">
+    </form>
+
+    <script>
+        // Get the return_date and return_time elements
+        const returnDateInput = document.getElementById('return_date');
+        const returnTimeSelect = document.getElementById('return_time');
+
+        // Function to fetch available times based on selected date
+        returnDateInput.addEventListener('change', () => {
+            const selectedDate = returnDateInput.value;
+            
+            // Perform an AJAX request to fetch available times based on selectedDate
+            // For demonstration, let's assume availableTimes is a list of available times
+            const availableTimes = ['10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM'];
+
+            // Clear previous options in return_time select element
+            returnTimeSelect.innerHTML = '<option value="" disabled selected>Select a time</option>';
+
+            // Populate return_time select element with available times
+            availableTimes.forEach(time => {
+                const option = document.createElement('option');
+                option.value = time;
+                option.textContent = time;
+                returnTimeSelect.appendChild(option);
+            });
+        });
+    </script>
+</body>
+</html>

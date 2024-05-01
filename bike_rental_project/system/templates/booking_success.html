@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Success</title>
+</head>
+<body>
+    <h1>Booking Successful!</h1>
+    <p>Your booking has been successfully placed.</p>
+    <!-- Add more content as needed -->
+    <a href="{% url 'my_bookings' %}">My Bookings</a>
+    <ul>
+        <!-- Other menu items... -->
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'profile' %}">Profile</a></li>
+        {% endif %}
+    </ul>
+</body>
+</html>

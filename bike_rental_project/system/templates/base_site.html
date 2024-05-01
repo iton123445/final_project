@@ -1,0 +1,13 @@
+
+<div id="content-main">
+  <h1>Welcome to the admin dashboard!</h1>
+  <ul>
+    <li><a href="{% url 'add_bike' %}">Add Admin Account</a></li>
+    <li><a href="{% url 'view_admin_accounts' %}">View Admin Accounts</a></li>
+    <li><a href="{% url 'add_bike' %}">Add Bike</a></li>
+    <li><a href="{% url 'update_bike' bike_id=1 %}">Update Bike</a></li>
+    <li><a href="{% url 'customadmin' %}">Booked List</a></li>
+
+    <!-- Add more custom admin links here -->
+  </ul>
+</div>

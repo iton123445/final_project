@@ -1,0 +1,41 @@
+<!-- bookings.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Bookings</title>
+</head>
+<body>
+    <h1>My Bookings</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about_us' %}">About Us</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+    </nav>
+    {% if bookings %}
+        <ul>
+            {% for booking in bookings %}
+                <li>
+                    <strong>Bike:</strong> {{ booking.bike.bike_name }} - {{ booking.bike.model }}<br>
+                    <strong>Booking Date:</strong> {{ booking.booking_date }}<br>
+                    <strong>Booking Date:</strong> {{ booking.start_time }}<br>
+                    <strong>Booking Date:</strong> {{ booking.end_time }}<br>
+                    <strong>Return Date:</strong> {{ booking.return_date }}<br>
+                    <strong>Status:</strong> {{ booking.status }}
+                    
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No bookings found.</p>
+    {% endif %}
+    <ul>
+        <!-- Other menu items... -->
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'profile' %}">Profile</a></li>
+        {% endif %}
+    </ul>
+</body>
+</html>

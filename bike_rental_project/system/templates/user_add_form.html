@@ -1,0 +1,14 @@
+<!-- templates/admin/auth/user_add_form.html -->
+
+{% extends "admin/change_form.html" %}
+{% load i18n %}
+
+{% block content %}
+<div id="content-main">
+  <form method="post" action="{% if is_popup %}.{% endif %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="{% trans 'Save' %}">
+  </form>
+</div>
+{% endblock %}

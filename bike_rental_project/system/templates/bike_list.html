@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bike List</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about_us' %}">About Us</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'profile' %}">Profile</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <h1>Bike List</h1>
+    <ul>
+        {% for bike in bikes %}
+            <li>
+                {{ bike.bike_name }} - {{ bike.model }} - ${{ bike.price }}
+                <form method="post" action="{% url 'add_to_cart' bike.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Add to Cart</button>
+                </form>                
+                
+                <a href="{% url 'book_bike' bike.id %}">Book Now</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
